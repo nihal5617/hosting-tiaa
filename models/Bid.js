@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const bidSchema = new mongoose.Schema({
-  userId: { type: String, required: true },
+  userId: { type: String, required: true, unique: true },
   amount: { type: Number, required: true },
   timestamp: { type: Date, default: Date.now },
 });

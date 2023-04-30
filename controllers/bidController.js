@@ -13,3 +13,15 @@ exports.createBid = async (req, res) => {
     res.status(500).json({ error: "Unable to create bid" });
   }
 };
+
+exports.showBid = async (req, res) => {
+  try {
+    Bid.find({}, function (err, collection) {
+      console.log("Bid Data Retrived");
+      res.send(collection);
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Unable to retrieve bid data" });
+  }
+};
