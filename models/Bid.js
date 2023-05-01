@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
 const bidSchema = new mongoose.Schema({
-  userId: { type: String, required: true, unique: true },
-  amount: { type: Number, required: true },
+  bidId: { type: String, required: true },
+  userId: { type: String, required: true },
+  amount: { type: Number, required: true, unique: true },
+  productId: { type: String, required: true },
   timestamp: { type: Date, default: Date.now },
 });
 

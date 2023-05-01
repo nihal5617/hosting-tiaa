@@ -1,11 +1,11 @@
 const Bid = require("../models/Bid");
 
 exports.createBid = async (req, res) => {
-  const { userId, amount } = req.body;
+  const { bidId, userId, amount, productId } = req.body;
 
   try {
     // create a new bid
-    const bid = await Bid.create({ userId, amount });
+    const bid = await Bid.create({ bidId, userId, amount, productId });
     res.json(bid);
     // console.log("Bid Data Saved");
   } catch (error) {
