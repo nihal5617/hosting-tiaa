@@ -29,9 +29,11 @@ const projectController = () => {
       let auctionStatus = "Upcoming";
       if (startDate < currentDate && endDate > currentDate) {
         auctionStatus = "Live";
+        console.log("inside", auctionStatus);
       } else if (endDate < currentDate) {
         auctionStatus = "Completed";
       }
+      console.log("outside", auctionStatus);
 
       try {
         const product = new Product({
