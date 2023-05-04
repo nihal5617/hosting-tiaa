@@ -54,12 +54,12 @@ const userController = () => {
         const transporter = nodemailer.createTransport({
           service: "gmail",
           auth: {
-            user: process.env.EMAIL,
-            pass: process.env.PASSWORD,
+            user: "djangodummy8000@gmail.com",
+            pass: "nvhssgnuqmtxeget",
           },
         });
         const mailOptions = {
-          from: process.env.EMAIL,
+          from: "djangodummy8000@gmail.com",
           to: email,
           subject: "OTP for registration",
           text: `Hello ${name}, your OTP for registration is ${otp}.`,
