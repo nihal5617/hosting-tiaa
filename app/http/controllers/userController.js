@@ -72,7 +72,7 @@ const userController = () => {
           }
         });
         delete user.password;
-        return res.status(200).json({ success: "Verify OTP" });
+        return res.status(200).json({ success: user });
       } catch (error) {
         return res.status(500).json({ error: error.message });
       }
