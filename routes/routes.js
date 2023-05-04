@@ -32,6 +32,8 @@ const routes = (app) => {
 
   // Admin routes
   app.get("/admin/products/sorted", adminController().getProuctsWithHighestBidInsortedOrder);
+  app.get("/admin/products/maxBids", adminController().getProductsWithMaxBids);
+  app.get("/admin/products/quickest", adminController().getQuickestRecurringBidsProducts);
 };
 
 export default routes;

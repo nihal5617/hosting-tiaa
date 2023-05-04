@@ -19,6 +19,28 @@ const adminController = () => {
         async getProductsWithMaxBids(req, res) {
             try {
                 const products = await Product.find();
+                // if bids are empty remove that product
+                // products.forEach((product) => {
+                //     if (product.bids.length === 0) {
+                //         product.remove();
+                //     }
+                // });
+                const sortedProducts = products.sort((a, b) => {
+                    return b.bids.length - a.bids.length;
+                });
+                return res.status(200).json({ sortedProducts });
+            } catch (error) {
+                return res.status(500).json({ error: error.message });
+            }
+        },
+        async getQuickestRecurringBidsProducts(req, res) {
+            try {
+                const products = await Product.find();
+                // products.forEach((product) => {
+                //     if (product.bids.length === 0) {
+                //         product.remove();
+                //     }
+                // });
                 const sortedProducts = products.sort((a, b) => {
                     return b.bids.length - a.bids.length;
                 });

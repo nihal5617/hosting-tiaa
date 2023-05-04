@@ -20,7 +20,7 @@ const productSchema = mongoose.Schema(
     },
     type: {
       type: String,
-      enum: ["Electronics", "Vehicles", "Real estate", "Art piece", "Jewelry"],
+      enum: ["Electronics", "Vehicles", "Real estate", "Art piece", "Jewelry","Construction"],
       default: "Electronics",
       required: true,
     },

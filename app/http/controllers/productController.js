@@ -93,12 +93,16 @@ const projectController = () => {
         const jewelryCount = await Product.countDocuments({
           type: "Jewelry",
         });
+        const constructionCount = await Product.countDocuments({
+          type: "Construction",
+        });
         const output = [
           { name: "Electronics", number_of_products: electronicsCount },
           { name: "Vehicles", number_of_products: vehiclesCount },
           { name: "Real estate", number_of_products: realEstateCount },
           { name: "Art piece", number_of_products: artPieceCount },
           { name: "Jewelry", number_of_products: jewelryCount },
+          { name: "Construction", number_of_products: constructionCount },
         ];
         return res.status(200).json({ output });
       } catch (error) {
