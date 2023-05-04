@@ -13,15 +13,20 @@ const routes = (app) => {
   app.get("/user/:userId/products/bided", userController().getBidedProducts);
 
   // Product routes
-  app.post("/product/create", imageUpload.single("image"), projectController().createProduct);
+  app.post(
+    "/product/create",
+    imageUpload.single("image"),
+    projectController().createProduct
+  );
   app.get("/products", projectController().getProducts);
   app.get("/product/:productId", projectController().getProduct);
+  app.get("/product", projectController().getAllTypesCount);
 
   // Bid routes
   app.post("/bid/create", bidController().createBid);
 
   // Update status routes
-    app.get("/updateStatus", updateStatusController().updateStatus);
+  app.get("/updateStatus", updateStatusController().updateStatus);
 };
 
 export default routes;

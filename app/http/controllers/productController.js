@@ -72,6 +72,37 @@ const projectController = () => {
         return res.status(500).json({ error: error.message });
       }
     },
+
+    async getAllTypesCount(req, res) {
+      // each product has a type from the following list
+      // ["Electronics", "Vehicles", "Real estate", "Art piece", "Jewelry"]
+      try {
+        const electronicsCount = await Product.countDocuments({
+          type: "Electronics",
+        });
+        const vehiclesCount = await Product.countDocuments({
+          type: "Vehicles",
+        });
+        const realEstateCount = await Product.countDocuments({
+          type: "Real estate",
+        });
+        const artPieceCount = await Product.countDocuments({
+          type: "Art piece",
+        });
+        const jewelryCount = await Product.countDocuments({
+          type: "Jewelry",
+        });
+        return res.status(200).json({
+          electronicsCount,
+          vehiclesCount,
+          realEstateCount,
+          artPieceCount,
+          jewelryCount,
+        });
+      } catch (error) {
+        return res.status(500).json("error");
+      }
+    },
   };
 };
 
