@@ -68,6 +68,11 @@ const projectController = () => {
       const { productId } = req.params;
       try {
         const product = await Product.findById(productId).populate("bids");
+        if (product.type === "Construction") {
+          product.bids.sort((a, b) => a.bidAmount - b.bidAmount);
+        } else {
+          product.bids.sort((a, b) => b.bidAmount - a.bidAmount);
+        }
         return res.status(200).json({ product });
       } catch (error) {
         return res.status(500).json({ error: error.message });
