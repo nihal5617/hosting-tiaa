@@ -15,7 +15,18 @@ const adminController = () => {
             } catch (error) {
                 return res.status(500).json({ error: error.message });
             }
-        }
+        },
+        async getProductsWithMaxBids(req, res) {
+            try {
+                const products = await Product.find();
+                const sortedProducts = products.sort((a, b) => {
+                    return b.bids.length - a.bids.length;
+                });
+                return res.status(200).json({ sortedProducts });
+            } catch (error) {
+                return res.status(500).json({ error: error.message });
+            }
+        },
     }
 }
 

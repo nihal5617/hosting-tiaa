@@ -25,11 +25,12 @@ const projectController = () => {
         auctionType,
       } = req.body;
       seller = new ObjectId(seller);
-      const currentDate = new Date();
+      let currentDate = new Date();
+      currentDate = currentDate.toISOString().split("T")[0];
       let auctionStatus = "Upcoming";
+      console.log(startDate, endDate, currentDate);
       if (startDate < currentDate && endDate > currentDate) {
         auctionStatus = "Live";
-        console.log("inside", auctionStatus);
       } else if (endDate < currentDate) {
         auctionStatus = "Completed";
       }
@@ -92,13 +93,14 @@ const projectController = () => {
         const jewelryCount = await Product.countDocuments({
           type: "Jewelry",
         });
-        return res.status(200).json({
-          electronicsCount,
-          vehiclesCount,
-          realEstateCount,
-          artPieceCount,
-          jewelryCount,
-        });
+        const output = [
+          { name: "Electronics", number_of_products: electronicsCount },
+          { name: "Vehicles", number_of_products: vehiclesCount },
+          { name: "Real estate", number_of_products: realEstateCount },
+          { name: "Art piece", number_of_products: artPieceCount },
+          { name: "Jewelry", number_of_products: jewelryCount },
+        ];
+        return res.status(200).json({ output });
       } catch (error) {
         return res.status(500).json("error");
       }
