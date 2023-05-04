@@ -6,6 +6,7 @@ import cors from "cors";
 import cron from "node-cron";
 import routes from "./routes/routes.js";
 import updateStatus from "./app/config/updateStatus.js";
+import emailGenerator from "./app/config/emailGenerator.js";
 
 /* CONFIGURATIONS */
 dotenv.config();
@@ -45,4 +46,5 @@ try {
 cron.schedule("19 0 * * *", () => {
   console.log("Running cron job...");
   updateStatus();
+  emailGenerator();
 });

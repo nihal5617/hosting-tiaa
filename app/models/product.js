@@ -28,6 +28,10 @@ const productSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    finalPrice : {
+      type: Number,
+      default: 0,
+    },
     startDate: {
       type: Date,
       required: true,

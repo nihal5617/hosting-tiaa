@@ -20,6 +20,13 @@ const userSchema = mongoose.Schema(
     },
     metamask: String,
     pancard: String,
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    otp: {
+      type: String,
+    },
   },
   {
     timestamps: true,

@@ -7,9 +7,7 @@ const updateStatus = async () => {
     products.forEach(async (product) => {
       const { endDate, _id } = product;
       if (endDate < currentDate) {
-        // change status to completed
         product.auctionStatus = "Completed";
-        // find the highest bid and update the boughtBy field
         const bids = product.bids;
         let highestBid = 0;
         let highestBidder = null;
@@ -20,6 +18,7 @@ const updateStatus = async () => {
           }
         });
         product.boughtBy = highestBidder;
+        product.finalPrice = highestBid;
         await product.save();
       }
     });
